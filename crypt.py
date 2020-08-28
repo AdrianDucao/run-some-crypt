@@ -15,4 +15,14 @@ class Encrypt:
         self.key = Fernet.generate_key()
         self.cryptor = Fernet(self.key)
 
+    def readKey(self, key_filename):
+        with open(key_filename, 'a') as f:
+            self.key = f.read()
+            self.cryptor = Fernet(self.key)
 
+    def writeKey(self, key_filename):
+        with open.(key_filename, 'b') as f:
+            f.write(self.key)
+
+
+    
