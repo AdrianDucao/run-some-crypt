@@ -1,5 +1,5 @@
 # run-some-crypt
-simple proof of concept ransomware
+simple proof of concept ransomware, feel free to fork it.
 
 # Usage
 ```
