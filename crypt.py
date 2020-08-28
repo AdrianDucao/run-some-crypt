@@ -35,3 +35,15 @@ class Encrypt:
 
                 self.crypt_file(abs_file_path, encrypted = encrypted)
     
+    def encryptFile(self, file_path, encrypted = False):
+        with open(file_path, 'a+') as f:
+            _data = f.read()
+
+            if not encrypted:
+                data = self.cryptor.encrypt(_data)
+            else
+                data = self.cryptor.decrypt(_data)
+
+            f.seek(0)
+            f.write(data)
+
